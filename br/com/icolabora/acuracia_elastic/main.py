@@ -19,19 +19,20 @@ while loop < 16:
     cursor.execute(query)
     acerto = 0
     total = 0
+
     for i in cursor:
         reclamacao = i[1]
         # analyzer = 'classificacao_anatel'
-        res = es.search(index="machine_learning_treino", body={
-            "query": {"common": {"RECLAMACAO.classificacao": {"query": reclamacao, "analyzer": "classificacao_anatel", "cutoff_frequency": 0.001}}}, "size": loop})
+        res = es.search(index="machine_learning", body={
+            "query": {"common": {"reclamacao.classificacao": {"query": reclamacao, "analyzer": "classificacao_anatel", "cutoff_frequency": 0.001}}}, "size": loop})
         verificador = {}
         total += 1
         if res['hits']['total'] > 0:
             for hit in res['hits']['hits']:
-                if(verificador.has_key(hit['_source']['SERVICO'])):
-                    verificador[hit['_source']['SERVICO']] += 1
+                if(verificador.has_key(hit['_source']['servico'])):
+                    verificador[hit['_source']['servico']] += 1
                 else:
-                    verificador[hit['_source']['SERVICO']] = 1
+                    verificador[hit['_source']['servico']] = 1
 
 
             if max(verificador, key=verificador.get) == i[5]:

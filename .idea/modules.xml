@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../cria_grafo_generico.py/.idea/cria_grafo_generico.py.iml" filepath="$PROJECT_DIR$/../cria_grafo_generico.py/.idea/cria_grafo_generico.py.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/machinelearning.iml" filepath="$PROJECT_DIR$/.idea/machinelearning.iml" />
     </modules>
   </component>

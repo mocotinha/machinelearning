@@ -577,3 +577,56 @@ PUT newsgroup/_mapping/email
       }
    }
 }
+
+
+PUT machine_learning/_mapping/reclamacao
+{
+   "reclamacao": {
+      "properties": {
+         "ID": {
+            "type": "string",
+            "index": "not_analyzed"
+         },
+         "RECLAMACAO": {
+            "type": "string",
+            "fields": {
+               "raw": {
+                  "type": "string",
+                  "index": "not_analyzed"
+               },
+               "classificacao": {
+                  "type": "string",
+                  "analyzer": "classificacao_anatel",
+                  "similarity": "BM25"
+               }
+            }
+         },
+         "DATA_REGISTRO": {
+            "type": "date"
+         },
+         "UF": {
+            "type": "string"
+         },
+         "CIDADE": {
+            "type": "string",
+            "index": "not_analyzed"
+         },
+         "SERVICO": {
+            "type": "string",
+            "index": "not_analyzed"
+         },
+         "MOTIVO": {
+            "type": "string",
+            "index": "not_analyzed"
+         },
+         "SUBMOTIVO": {
+            "type": "string",
+            "index": "not_analyzed"
+         },
+         "TIPO_ATENDIMENTO": {
+            "type": "string",
+            "index": "not_analyzed"
+         }
+      }
+   }
+}
